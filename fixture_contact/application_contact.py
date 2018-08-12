@@ -1,25 +1,15 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
-
+from fixture_contact.session_contact import SessionContactHelper
 
 class ContactApplication:
     def __init__(self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
+        self.sessions = SessionContactHelper(self)
 
     def open_homepage(self):
         wd = self.wd
         wd.get("http://localhost/addressbook/addressbook/")
-
-    def login(self, username, password):
-        wd = self.wd
-        self.open_homepage()
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys(username)
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
 
     def create_contact(self, contact):
         wd = self.wd
@@ -96,10 +86,6 @@ class ContactApplication:
         wd.find_element_by_name("notes").send_keys(contact.notes)
         # submit contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-
-    def logout(self):
-        wd = self.wd
-        wd.find_element_by_link_text("Logout").click()
 
     def destroy(self):
         self.wd.quit()
