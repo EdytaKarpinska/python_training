@@ -1,3 +1,6 @@
+from model.group import Contact
+
+
 class ContactHelper:
 
     def __init__(self, app):
@@ -78,3 +81,25 @@ class ContactHelper:
         wd.find_element_by_name("notes").send_keys(contact.notes)
         # submit contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/form[2]/div[2]/input").click()
+        wd.switch_to.alert.accept()
+
+    def edit_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("/html/body/div/div[4]/form[2]/div[2]/input").click()
+        wd.switch_to.alert.accept()
+        self.create_c(
+            Contact(
+                userfirstname="Edyta", usermiddlename="EK", userlastname="Karpinska", nick="EiKi",
+                title="Title", company="Python", address="My address", home="Home",
+                mobile="789456123", workphone="85965784", fax="879654", email="test@localhost.com",
+                email2="test2@localhost.com",
+                email3="test3@localhost.com", homepage="homepage", birthyear="1990", anniversaryyear="2015",
+                secondaddres="Secondary address", homephone="Second home", notes="Note"
+            )
+        )
