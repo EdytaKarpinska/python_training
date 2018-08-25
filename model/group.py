@@ -1,15 +1,15 @@
 class Group:
 
-    def __init__(self, name, header, footer):
+    def __init__(self, name=None, header=None, footer=None):
         self.name = name
         self.header = header
         self.footer = footer
 
 
 class Contact:
-    def __init__(self, userfirstname, usermiddlename, userlastname, nick, title, company, address, home,
-                mobile, workphone, fax, email, email2, email3, homepage, birthyear, anniversaryyear, secondaddres,
-                homephone, notes):
+    def __init__(self, userfirstname=None, usermiddlename=None, userlastname=None, nick=None, title=None, company=None, address=None, home=None,
+                mobile=None, workphone=None, fax=None, email=None, email2=None, email3=None, homepage=None, birthyear=None, anniversaryyear=None, secondaddres=None,
+                homephone=None, notes=None):
         self.userfirstname = userfirstname
         self.usermiddlename = usermiddlename
         self.userlastname = userlastname
