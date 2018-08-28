@@ -71,3 +71,7 @@ class ContactHelper:
         self.fill_contact_form(new_contact_data)
         #wd.switch_to.alert.accept()
         wd.find_element_by_name("update").click()
+
+    def count_c(self):
+        wd = self.app.wd
+        return len(wd.find_elements_by_name("selected[]"))
